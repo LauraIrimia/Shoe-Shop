@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-ecommerce": {
+    "shoe-shop": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-ecommerce",
+            "outputPath": "dist/shoe-shop",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +27,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": []
           },
@@ -68,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-ecommerce:build:production"
+              "browserTarget": "shoe-shop:build:production"
             },
             "development": {
-              "browserTarget": "angular-ecommerce:build:development"
+              "browserTarget": "shoe-shop:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-ecommerce:build"
+            "browserTarget": "shoe-shop:build"
           }
         },
         "test": {
@@ -102,5 +104,5 @@
       }
     }
   },
-  "defaultProject": "angular-ecommerce"
+  "defaultProject": "shoe-shop"
 }

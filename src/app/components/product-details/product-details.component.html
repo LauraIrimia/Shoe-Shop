@@ -1,0 +1,58 @@
+<div class="detail-section">
+    <div class="container-fluid">
+        <br>
+        <form style="float: right">
+            <br>
+            <legend style="color:red;">Choose a size:</legend>
+            <label class="radio-inline" *ngFor="let tempSize of sizes">
+                <div *ngIf="tempSize.active">
+                    <input type="radio" name="optradio" (click)="choseSize(tempSize.name)">{{tempSize.name}}
+                </div>
+            </label>
+        </form>
+
+        <img src="{{ product.imageUrl }}" class="detail-img">
+
+        <div *ngIf="+product.id>=21 && +product.id<46">
+            <form>
+                <legend style="color:red;">Choose a heel hight:</legend>
+                <label class="radio-inline" *ngFor="let tempHight of hights">
+                    <div *ngIf="tempHight.active">
+                        <input type="radio" name="optradio" (click)="choseHeel(tempHight.hight)">{{tempHight.hight}} cm
+                    </div>
+                </label>
+            </form>
+        </div>
+        
+        <div class="product-box">
+            <div *ngIf="colors.length>0" class="chcolor">
+                <legend style="color:red;">Choose a color:</legend>
+            </div>
+            <div *ngFor="let tempColor of colors">
+                <button (click)="choseColor(tempColor.imageUrl)" type="button" style="float: right"><img
+                        src="{{ tempColor.imageUrl }}" class="detail-img"></button>
+            </div>
+        </div>
+        <div *ngIf="colors.length>0">
+            <br><br>
+        </div>
+       
+
+        <h3>{{ product.name }}</h3>
+        <div class="price">{{ product.unitPrice | currency:'USD' }}</div>
+        <br>
+        <div *ngIf="colors.length==0 && chosedSize">
+            <button (click)="addToCart()" class="btn btn-primary btn-sm">Add to cart</button>
+        </div>
+
+        <div *ngIf="chosedColor && chosedSize && chosedHeel">
+            <button (click)="addToCart1()" class="btn btn-primary btn-sm">Add to cart</button>
+        </div>
+
+        <hr>
+        <h4>Description</h4>
+        <p>{{ product.description }}</p>
+
+        <a routerLink="/products" class="mt-5">Back to Product List</a>
+    </div>
+</div>
